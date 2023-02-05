@@ -1,0 +1,326 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background: #5d5c61;
+        font-family: Sans-serif;
+        overflow: auto;
+      }
+      .frosted {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0)
+        );
+        backdrop-filter: blur(100px);
+        -webkit-background-filter: blur(10px);
+        border-radius: 20px;
+      }
+      svg text {
+        font-family: roboto, sans-serif;
+        letter-spacing: 10px;
+        stroke: black;
+        font-size: 90px;
+        font-weight: 700;
+        stroke-width: 3;
+        fill: #3c3e44;
+        margin-top: 0px;
+
+        animation: textAnimate 5s;
+      }
+      .topImg {
+        width: 50%;
+        height: 50%;
+        object-fit: cover;
+      }
+      .formdiv {
+        display: block;
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2rem;
+        background-color: rgba(0, 4, 40, 0.3);
+        width: 50%;
+        margin: 0 auto;
+        
+
+      }
+      @media (max-width: 600px) {
+        svg text {
+          font-size: 50px;
+        }
+        .topImg {
+          padding-top: 100px;
+          width: 100%;
+          height: 100%;
+        }
+        .formdiv {
+          width: 100%;
+        }
+      }
+
+      
+
+      h2 {
+        font-size: 2.25rem;
+      }
+
+      h1,
+      h2 {
+        font-weight: 100;
+      }
+      ul {
+        list-style-type: none;
+        padding: 2.125rem;
+      }
+
+      li {
+        display: inline-block;
+        margin: 0 0.8rem;
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      a:hover {
+        font-weight: bold;
+        color: #000;
+      }
+
+      /* Nav */
+      .nav-container {
+        position: fixed;
+        border-radius: 25px;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5.625rem;
+        z-index: 1;
+        width: 70%;
+        margin: 0 auto;
+        background-color: rgba(0, 4, 40, 0.3);
+      }
+
+      .nav-container > .glass-content {
+        background-color: rgba(0, 4, 40, 0.3);
+      }
+
+      .left-menu {
+        position: absolute;
+        left: 5%;
+        top: 0;
+        bottom: 0;
+        height: 1.5625rem;
+        margin: auto;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+
+      .nav-content {
+        margin: 0 auto 0 8.7rem;
+        max-width: 62.5rem;
+        min-height: 5.375rem;
+        position: relative;
+        width: 80%;
+      }
+
+      @media all and (max-width: 50.625rem) {
+        .nav-container {
+          height: 10.625rem;
+        }
+        .nav-content {
+          width: 8rem;
+        }
+        .nav-content > li {
+          display: block;
+          margin: 0.5rem 0;
+        }
+      }
+
+      .nav-cta {
+        border: solid 0.125rem rgb(0, 153, 255);
+        border-radius: 0.1875rem;
+        padding: 0 1.875rem;
+        background: transparent;
+        color: rgb(0, 153, 255);
+        font-size: 1rem;
+        position: absolute;
+        right: 4%;
+        height: 2.75rem;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+      }
+      .main {
+        margin-top: 6.625rem;
+        padding: 2.125rem;
+        text-align: center;
+      }
+      .main h1 {
+        font-size: 3rem;
+        font-weight: 100;
+        animation: textFade 0.5s ease-in-out;
+      }
+      .main p {
+        font-size: 1.5rem;
+        font-weight: 100;
+        font-family: brandon-grotesque, sans-serif;
+        animation: textFade 1s ease-in-out;
+      }
+      .main a {
+        color: #557a95;
+        font-family: brandon-grotesque, sans-serif;
+        animation: textFade 1s ease-in-out;
+      }
+
+      @keyframes textFade {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
+      .form {
+        align-items: center;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+      .form p {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        font-weight: 100;
+        color: white;
+        font-family: brandon-grotesque, sans-serif;
+        animation: textFade 1s ease-in-out;
+      }
+      .form input {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        font-weight: 100;
+        font-family: brandon-grotesque, sans-serif;
+        border-radius: 5px;
+        animation: textFade 1s ease-in-out;
+      }
+      
+      .subtext {
+        font-size: 1.5rem;
+        font-weight: 100;
+        color: black;
+        font-family: brandon-grotesque, sans-serif;
+        animation: textFade 1s ease-in-out;
+      }
+      
+      .material-icons {
+        width: 4rem;
+        height: 4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frosted nav-container">
+        <a href=""
+          ><img
+            class="material-icons left-menu logo"
+            src="{% static 'logo_croped.png' %}"
+        /></a>
+        <ul class="nav-content">
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    <div class="main">
+      <img class="topImg" src="{% static "logo_full.png"%}">
+      <svg width="100%" height="15%">
+        <text x="50%" y="60%" text-anchor="middle">Contact us</text>
+      </svg>
+      <p class="subtext">
+        We are here to help you with any questions you may have about our
+        services. <br> Reach out to us and we'll respond as soon as we can. 
+        You can reach out to us through <br> the form below or by phone at 
+        281-831-1067 or by email at rickullmann@yahoo.com</p>
+      </p>
+      <div class="formdiv">
+      <form
+        action="mailto:rickullmann@yahoo.com"
+        method="post"
+        enctype="text/plain"
+        class="form"
+      >
+      <div>
+        <br><br>
+        <p>First Name:</p>
+        <br /><input type="text" name="firstname" /><br />
+      </div>
+        <div>
+        <p>Last Name:</p>
+        <br /><input type="text" name="lastname" /><br />
+        </div>
+        <div>
+        <p>Email:</p>
+        <br /><input type="text" name="email" /><br />
+        </div>
+        <div>
+        <p>Phone:</p>
+        <br /><input type="text" name="phone" /><br />
+        </div>
+        <div>
+        <p>Which service are you interested in?</p>
+        <br /><select name="service">
+          <option value="newConstruction">New Construction</option>
+          <option value="renovation">Renovation</option>
+          <option value="interiorDesign">Interior Design</option>
+        </select>
+        </div>
+        <div>
+        <p>Currently own lot?</p>
+        <br /><select name="own lot">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+        </div>
+        <div>
+        <p>What price range are you looking for?</p>
+        <br /><select name="price">
+          <option value="600k-700k">600k-700k</option>
+          <option value="700k-800k">700k-800k</option>
+          <option value="800k-900k">800k-900k</option>
+          <option value="900k+">900k+</option>
+        </select>
+        </div>
+        <div>
+        <p>How soon are you looking to start building?</p>
+        <br /><select name="start date">
+          <option value="RightAway">Right Away</option>
+          <option value="NextSixMonths">In the next 6 months</option>
+          <option value="6-18months">In the next 6-18 months</option>
+          <option value="NextFewYears">In the next few years</option>
+        </select>
+        </div>
+        <div>
+        <p>What is the best time to contact you?</p>
+        <br /><select name="best time to reach you">
+          <option value="Morning">Morning</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Evening">Evening</option>
+        </select>
+        <div>
+
+        <p>Additional Information:</p>
+        <br /><textarea name="additional info" rows="10" cols="30"></textarea
+        ><br />
+        </div>
+
+        <input type="submit" value="Send" />
+      </form>
+    </div>
+    </div>
+  </body>
+</html>

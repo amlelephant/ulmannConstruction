@@ -1,0 +1,326 @@
+{%load static%}
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      @import url("https://fonts.googleapis.com/css?  family=Lora:400,400i,700,700i");
+      body {
+        background: #5d5c61;
+        font-family: Sans-serif;
+        overflow: auto;
+      }
+
+      svg text {
+        font-family: roboto, sans-serif;
+        letter-spacing: 10px;
+        stroke: black;
+        font-size: 90px;
+        font-weight: 700;
+        stroke-width: 3;
+        fill: #3c3e44;
+        margin-top: 0px;
+
+        animation: textAnimate 5s;
+      }
+      .frosted {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0)
+        );
+        backdrop-filter: blur(100px);
+        -webkit-background-filter: blur(10px);
+        border-radius: 20px;
+      }
+      .about_sub {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: black;
+        text-align: center;
+        width: 80vw;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 600px) {
+        svg text {
+          font-size: 45px;
+        }
+        .about_sub {
+          font-size: 20px;
+          width: 400px;
+        }
+      }
+
+      @keyframes subTextAnimate {
+        0% {
+          opacity: 0;
+          transform: translateX(-100px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes textAnimate {
+        0% {
+          stroke-dasharray: 0 50%;
+          stroke-dashoffset: 20%;
+          fill: #5d5c61;
+        }
+
+        100% {
+          stroke-dasharray: 50% 0;
+          stroke-dashoffstet: -20%;
+          fill: #3c3e44;
+        }
+      }
+      .header {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: #5d5c61;
+        justify-content: center;
+      }
+      .header_title {
+        font-size: 60px;
+        font-weight: 700;
+        color: #abdbe3;
+        text-align: center;
+        animation: subTextAnimate 5s;
+        align-self: center;
+        margin: 0;
+      }
+      .header_sub {
+        font-size: 30px;
+        font-weight: 700;
+        color: #abdbe3;
+        text-align: center;
+        animation: subTextAnimate 5s;
+      }
+      .buttons {
+        text-align: center;
+      }
+      .header_button1 {
+        align-items: center;
+        background-color: #557a95;
+        border-radius: 200px;
+        font-family: brandon-grotesque, sans-serif;
+        font-size: 13px;
+        padding: 21px 30px;
+        text-align: center;
+        text-transform: uppercase;
+        animation: subTextAnimate 5s;
+        width: 160px;
+        cursor: pointer;
+      }
+      .header_button2 {
+        align-items: center;
+        background-color: #557a95;
+        border-radius: 200px;
+        font-family: brandon-grotesque, sans-serif;
+        font-size: 13px;
+        margin-top: -60px;
+        padding: 21px 30px;
+        text-align: center;
+        text-transform: uppercase;
+        animation: subTextAnimate 5s;
+        width: 150px;
+        cursor: pointer;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      h2 {
+        font-size: 2.25rem;
+      }
+
+      h1,
+      h2 {
+        font-weight: 100;
+      }
+      ul {
+        list-style-type: none;
+        padding: 2.125rem;
+      }
+
+      li {
+        display: inline-block;
+        margin: 0 0.8rem;
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      a:hover {
+        font-weight: bold;
+        color: #000;
+      }
+
+      /* Nav */
+      .nav-container {
+        position: fixed;
+        border-radius: 25px;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5.625rem;
+        z-index: 1;
+        width: 70%;
+        margin: 0 auto;
+        background-color: rgba(0, 4, 40, 0.3);
+      }
+
+      .nav-container > .glass-content {
+        background-color: rgba(0, 4, 40, 0.3);
+      }
+
+      .left-menu {
+        position: absolute;
+        left: 5%;
+        top: 0;
+        bottom: 0;
+        height: 1.5625rem;
+        margin: auto;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+
+      .nav-content {
+        margin: 0 auto 0 8.7rem;
+        max-width: 62.5rem;
+        min-height: 5.375rem;
+        position: relative;
+        width: 80%;
+      }
+
+      @media all and (max-width: 50.625rem) {
+        .nav-container {
+          height: 10.625rem;
+        }
+        .nav-content {
+          width: 8rem;
+        }
+        .nav-content > li {
+          display: block;
+          margin: 0.5rem 0;
+        }
+      }
+
+      .nav-cta {
+        border: solid 0.125rem rgb(0, 153, 255);
+        border-radius: 0.1875rem;
+        padding: 0 1.875rem;
+        background: transparent;
+        color: rgb(0, 153, 255);
+        font-size: 1rem;
+        position: absolute;
+        right: 4%;
+        height: 2.75rem;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+      }
+
+      .segment2 {
+        background-image: url("/media/images/logo_croped.png");
+        background: #b9b3a1;
+        height: 21.875rem;
+        color: black;
+        position: relative;
+        margin-top: 100vh;
+        width: 100vw;
+        height: 50vh;
+        text-align: center;
+        background-size: cover;
+      }
+      .app {
+        background: #5d5c61;
+        overflow: hidden;
+        position: relative;
+      }
+      .2title {
+        font-family: roboto;
+        font-size: 3rem;
+        margin: auto;
+        color: #557a95;
+        text-align: center;
+      }
+
+      .material-icons {
+        width: 4rem;
+        height: 4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="frosted nav-container">
+        <a href=""
+          ><img
+            class="material-icons left-menu logo"
+            src="{% static 'logo_croped.png' %}"
+        /></a>
+        <ul class="nav-content">
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="header">
+        <br /><br /><br /><br /><br /><br /><br /><br />
+        <div cslass="header_title">
+          <p class="header_sub">Custom home builders</p>
+          <svg width="100%">
+            <text x="50%" y="60%" text-anchor="middle">RUllmann</text>
+          </svg>
+          <svg width="100%">
+            <text x="50%" y="60%" text-anchor="middle">Construction</text>
+          </svg>
+          <div class="buttons">
+            <a href="/services"
+              ><button class="header_button1">Services</button></a
+            >
+            <a href="/contact"
+              ><button class="header_button2">Contact Us</button></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="segment2">
+        <br /><br /><br /><br />
+        <h1 class="2title">About Us</h1>
+        <p class="about_sub">
+          The Ullmann family represents three generations of Custom Home
+          Builders expanding over 70 years.<br />
+          Beginning with Big Dad (Richard, Sr.) starting in the 1950's. His hard
+          work and integrity were instilled in his son, PaPa (Richard, Jr.)<br />
+          as well as his grandson, Rick (Richard III), whom both are still
+          building with the same passion and reliability.<br />
+          Rick grew up building Custom Homes throughout High School and after
+          graduating from college,<br />
+          entered the Commercial Industry for 12 years. Today they will be
+          honored to build your Home for your Family.
+        </p>
+      </div>
+      <img
+        src="D:\AidensWebsites\ullmannConstruction\media\images\logo_full.png"
+      />
+    </div>
+    <script>
+      const gallery = document.querySelectorAll(".dopdwn");
+      const gallery1 = document.querySelectorAll(".dropdown");
+      gallery.addEventListener("click", () => {
+        gallery1.style.display = "block";
+        gallery1.style.backgroundColor = "red";
+        console.log("clicked");
+      });
+      gallery.addEventListener("click", () => {
+        gallery1.style.display = "none";
+      });
+    </script>
+  </body>
+</html>

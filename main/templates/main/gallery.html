@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background: #5d5c61;
+      }
+      .frosted {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0)
+        );
+        backdrop-filter: blur(100px);
+        -webkit-background-filter: blur(10px);
+        border-radius: 20px;
+      }
+
+      @media all and (min-width: 1301px) and (max-width: 1500px) {
+        html {
+          font-size: 1.125rem;
+        }
+      }
+
+      @media all and (min-width: 1501px) and (max-width: 2500px) {
+        html {
+          font-size: 1.25rem;
+        }
+      }
+
+      @media all and (min-width: 2501px) and (max-width: 4000px) {
+        html {
+          font-size: 1.8rem;
+        }
+      }
+
+      @media all and (min-width: 4001px) and (max-width: 5000px) {
+        html {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media all and (min-width: 5001px) {
+        html {
+          font-size: 3.5rem;
+        }
+      }
+      @media all and (max-width: 56.25rem) {
+        h1 {
+          font-size: 2.4rem;
+        }
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+      @media all and (max-width: 31.25rem) {
+        h1 {
+          font-size: 2rem;
+        }
+      }
+      h1 {
+        font-size: 3rem;
+      }
+
+      h2 {
+        font-size: 2.25rem;
+      }
+
+      h1,
+      h2 {
+        font-weight: 100;
+      }
+      ul {
+        list-style-type: none;
+        padding: 2.125rem;
+      }
+
+      li {
+        display: inline-block;
+        margin: 0 0.8rem;
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      a:hover {
+        font-weight: bold;
+        color: #000;
+      }
+
+      /* Nav */
+      .nav-container {
+        position: fixed;
+        border-radius: 25px;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5.625rem;
+        z-index: 1;
+        width: 70%;
+        margin: 0 auto;
+        background-color: rgba(0, 4, 40, 0.3);
+      }
+
+      .nav-container > .glass-content {
+        background-color: rgba(0, 4, 40, 0.3);
+      }
+
+      .left-menu {
+        position: absolute;
+        left: 5%;
+        top: 0;
+        bottom: 0;
+        height: 1.5625rem;
+        margin: auto;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+
+      .nav-content {
+        margin: 0 auto 0 8.7rem;
+        max-width: 62.5rem;
+        min-height: 5.375rem;
+        position: relative;
+        width: 80%;
+      }
+
+      @media all and (max-width: 50.625rem) {
+        .nav-container {
+          height: 10.625rem;
+        }
+        .nav-content {
+          width: 8rem;
+        }
+        .nav-content > li {
+          display: block;
+          margin: 0.5rem 0;
+        }
+      }
+
+      .nav-cta {
+        border: solid 0.125rem rgb(0, 153, 255);
+        border-radius: 0.1875rem;
+        padding: 0 1.875rem;
+        background: transparent;
+        color: rgb(0, 153, 255);
+        font-size: 1rem;
+        position: absolute;
+        right: 4%;
+        height: 2.75rem;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+      }
+      .gallery {
+        margin-top: -200px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1rem;
+        padding: 1rem;
+      }
+      .gallery_img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: relative;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease;
+      }
+
+      .gallery-zoom {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 2;
+        visibility: hidden;
+      }
+      .gallery-zoom img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 100px;
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+      .active {
+        visibility: visible;
+      }
+      .title {
+        text-align: center;
+        height: 75vh;
+      }
+      @keyframes textAnimate {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      svg text {
+        height: 100%;
+        font-family: Lora;
+        letter-spacing: 10px;
+        stroke: black;
+        font-size: 90px;
+        font-weight: 700;
+        stroke-width: 3;
+        fill: #7395ae;
+
+        animation: textAnimate 5s;
+      }
+      @media (max-width: 600px) {
+        svg text {
+          font-size: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frosted nav-container">
+      <a href=""><img class="material-icons left-menu logo" src="" /></a>
+      <ul class="nav-content">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About us</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="gallery-zoom">
+      <button class="close">X</button>
+      <img src="" alt="" />
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div class="title">
+      <svg width="100%" height="15%">
+        <text x="50%" y="60%" text-anchor="middle">Photo Gallery</text>
+      </svg>
+    </div>
+    <div class="gallery">
+      {% for image in images %}
+      <img class="gallery_img" src="{{ image.image }}" alt="fdsa" />
+      {% endfor %}
+    </div>
+    <script>
+      // when a image is clicked it will zoom in
+      const gallery = document.querySelectorAll(".gallery_img");
+      const galleryZoom = document.querySelector(".gallery-zoom");
+      const galleryZoomImg = document.querySelector(".gallery-zoom img");
+      gallery.forEach((img) => {
+        img.addEventListener("click", () => {
+          galleryZoom.classList.add("active");
+          galleryZoomImg.src = img.src;
+        });
+      });
+      galleryZoom.addEventListener("click", () => {
+        galleryZoom.classList.remove("active");
+      });
+    </script>
+  </body>
+</html>
